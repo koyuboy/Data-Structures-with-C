@@ -1,6 +1,6 @@
 [Project]
-FileName=LinkedList.dev
-Name=LinkedList
+FileName=Linked_List.dev
+Name=Linked_List
 Type=1
 Ver=2
 ObjFiles=
@@ -51,7 +51,7 @@ AutoIncBuildNr=0
 SyncProduct=1
 
 [Unit1]
-FileName=Untitled2.c
+FileName=C:\Users\DELL\Desktop\list\Untitled3.c
 CompileCpp=0
 Folder=
 Compile=1
