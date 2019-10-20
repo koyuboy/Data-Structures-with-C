@@ -1,6 +1,6 @@
 [Project]
-FileName=Stack.dev
-Name=Stack
+FileName=LinkedList.dev
+Name=LinkedList
 Type=1
 Ver=2
 ObjFiles=
@@ -51,7 +51,7 @@ AutoIncBuildNr=0
 SyncProduct=1
 
 [Unit1]
-FileName=stack.c
+FileName=Untitled2.c
 CompileCpp=0
 Folder=
 Compile=1
