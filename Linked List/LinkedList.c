@@ -1,3 +1,5 @@
+// merge  , sort  ve sortla ekleme  , reverse   ekle  
+
 #include <stdlib.h>	//for malloc
 #include <stdio.h>
 
