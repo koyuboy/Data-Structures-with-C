@@ -1,5 +1,3 @@
-// merge  , sort  ve sortla ekleme  , reverse   ekle  
-
 #include <stdlib.h>	//for malloc
 #include <stdio.h>
 
@@ -35,6 +33,9 @@ void pushAfterNode(node * root,int x,int index){ // add  after given index
 	newnode->data = x;
 	int i;
 	for(i=0;i<index;i++){
+		root = root->next;
+	}
+	while(root->next->data != x){
 		root = root->next;
 	}
 	node * temp = root->next;
@@ -85,6 +86,21 @@ void removebyValue(node *root, int x){	//remove given node of list
 	free(temp);
 	
 }
+
+void reverseList(node **root){
+	node *temp = NULL;
+	node *prev = NULL;
+	node *iter = *root;
+	
+	while(iter != NULL){
+		temp = iter -> next;
+		iter -> next = prev;
+		prev = iter;
+		iter = temp;
+	}
+	
+	*root = prev;
+}
 // Note :: removeStartNode and removeEndNot  function will be adding removeEndNode ...
 int main(){
 	node * root;	// pointer to point beginning of the list
@@ -95,12 +111,14 @@ int main(){
 	printList(root);
 	pushStart(&root,20);
 	printList(root);
-	pushAfterNode(root,100,1);
-	printList(root);
-	removeStartNode(&root);
-	printList(root);
-	removeEndNode(root);
-	printList(root);
-	removebyValue(root,100);
+//	pushAfterNode(root,100,);
+//	printList(root);
+//	removeStartNode(&root);
+//	printList(root);
+//	removeEndNode(root);
+//	printList(root);
+//	removebyValue(root,100);
+//	printList(root);
+	reverseList(&root);
 	printList(root);
 }
