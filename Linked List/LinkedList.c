@@ -43,6 +43,42 @@ void pushAfterNode(node * root,int x,int index){ // add  after given index
 	newnode->next = temp;
 	
 }
+
+void sortPush(node ** root,int x){
+	
+	if((*root)==NULL){
+		*root =(node*)malloc(sizeof(node));
+		(*root)->next = NULL;
+		(*root)->data = x;
+		return;
+	}
+	if((*root)->data > x){
+		node * newnode =(node*)malloc(sizeof(node));
+		newnode->next = (*root);
+		newnode->data = x;	
+		(*root) = newnode;
+		return;
+	}
+	
+		node *iter = *root;
+
+		while(iter->next != NULL  &&  iter->next->data <= x  ){
+			iter = iter->next;
+		}
+		if(iter->next == NULL){
+			iter->next = (node*)malloc(sizeof(node));;
+			iter->next->data = x;
+			iter->next->next = NULL;
+			return;
+		}
+		node *temp=(node*)malloc(sizeof(node));
+		temp->data = x;
+		temp ->next= iter->next;
+		iter->next = temp;
+	
+}
+	
+
 void printList(node *root){		// print out elements of list
 	node * iter = root;
 	printf("Your List:\n");
@@ -101,16 +137,76 @@ void reverseList(node **root){
 	
 	*root = prev;
 }
-// Note :: removeStartNode and removeEndNot  function will be adding removeEndNode ...
-int main(){
-	node * root;	// pointer to point beginning of the list
-	root=malloc(sizeof(node));
+
+
+
+node *mergeSorted(node *a, node *b){			//merged 2 sorted linked list		recursively
+	node *temp = NULL;
+	if(a == NULL){
+		return b;
+	}else if(b == NULL){
+		return a;
+	}
 	
-	init(root,2);
-	pushEnd(root,10);
+	if(a->data <= b->data){
+		temp = a;
+		temp->next = mergeSorted(a->next,b);
+	}else{
+		temp = b;
+		temp->next = mergeSorted(a,b->next);
+	}
+	return temp;
+}
+
+
+
+int main(){
+	node * root = NULL;	// pointer to point beginning of the list
+//	root=(node*)malloc(sizeof(node));
+//	node * root2 = NULL;
+//	root2 = (node*)malloc(sizeof(node));
+
+
+
+	sortPush(&root,400);
+
+	sortPush(&root,40);
+	sortPush(&root,4);
+	sortPush(&root,450);
+	sortPush(&root,50);
+	
+	//printf("%d",root->data);
+//	printf("%d",root->next->data);
+//	printf("%d",root->next->next->data);
+//	sortPush(&root,10);
+//	sortPush(&root,8);
 	printList(root);
-	pushStart(&root,20);
-	printList(root);
+
+	
+
+//	pushStart(&root2,10);
+//	pushEnd(root2,20);
+//	pushEnd(root2,50);
+	
+	//init(root,2);
+//	pushStart(&root,30);
+//	pushEnd(root,40);
+//	pushEnd(root,60);
+	
+	
+//	printList(root);
+//	printList(root2);
+	
+//	mergeSorted(root,root2);
+	
+//	printList(root);
+//	printList(root2);
+	
+//	init(root,2);
+//	pushEnd(root,10);
+//	printList(root);
+//	pushStart(&root,20);
+//	printList(root);
 //	pushAfterNode(root,100,);
 //	printList(root);
 //	removeStartNode(&root);
@@ -119,6 +215,14 @@ int main(){
 //	printList(root);
 //	removebyValue(root,100);
 //	printList(root);
-	reverseList(&root);
-	printList(root);
+//	reverseList(&root);
+//	printList(root);
+
+
+
+
+
+
+
+
 }
