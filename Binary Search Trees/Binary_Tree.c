@@ -127,11 +127,31 @@ tree* deleteNode(tree* head, int x)
 	
 }
 
+int countLeftandRightBranch(tree *head,int *left, int *right,int temp){
+
+	if(head != NULL){
+	countLeftandRightBranch(head->left,left,right,temp);
+	if(head->data < temp){	
+		printf("sol");
+		(*left)++;
+	}else{
+		printf("sag");
+		(*right)++;
+	}	
+	countLeftandRightBranch(head->right,left,right,temp);
+}
+	
+}
+	
+		
 	
 
 
 int main(){
 	tree * head = NULL;	
+	
+	int left;
+	int right;
 	
 	int current = 1;
 	int choice;
@@ -144,7 +164,8 @@ int main(){
 		printf("4->find min\n");
 		printf("5->find max\n");
 		printf("6->delete\n");
-		printf("7->exit\n");
+		printf("7->count left right branches\n");
+		printf("9->exit\n");
 		scanf("%d",&choice);
 		switch(choice){
 			case 1:
@@ -178,6 +199,12 @@ int main(){
 				printTree(head);
 				break;
 			case 7:
+				left = 0;
+				right = 0;
+				countLeftandRightBranch(head,&left,&right,head->data);
+				printf("Left Branches: %d-- Right Braches: %d\n",left,right-1);
+				break;
+			case 9:
 				current = 0;		
 					
 		}
